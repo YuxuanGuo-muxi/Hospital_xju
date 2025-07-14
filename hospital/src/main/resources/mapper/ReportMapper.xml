@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xju.hospital.mapper.ReportMapper">
+
+    <resultMap type="com.xju.hospital.entity.Report" id="ReportsMap">
+        <result property="reportId" column="report_id" jdbcType="VARCHAR"/>
+        <result property="patientName" column="patient_name" jdbcType="VARCHAR"/>
+        <result property="patientBirthday" column="patient_birthday" jdbcType="TIMESTAMP"/>
+        <result property="patientAge" column="patient_age" jdbcType="VARCHAR"/>
+        <result property="patientId" column="patient_id" jdbcType="VARCHAR"/>
+        <result property="patientGender" column="patient_gender" jdbcType="VARCHAR"/>
+        <result property="checkTime" column="check_time" jdbcType="TIMESTAMP"/>
+        <result property="doctorName" column="doctor_name" jdbcType="VARCHAR"/>
+        <result property="diagnoseTime" column="diagnose_time" jdbcType="TIMESTAMP"/>
+        <result property="checkItem" column="check_item" jdbcType="VARCHAR"/>
+        <result property="checkEquipment" column="check_equipment" jdbcType="VARCHAR"/>
+        <result property="isNext" column="is_next" jdbcType="VARCHAR"/>
+        <result property="nextTime" column="next_time" jdbcType="TIMESTAMP"/>
+        <result property="tagSet" column="tag_set" jdbcType="VARCHAR"/>
+        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ReportsMap">
+        select
+            report_idpatient_namepatient_birthdaypatient_agepatient_idpatient_gendercheck_timedoctor_namediagnosis_timecheck_itemcheck_equipmentresultrisk_levelctrlocationnaturerepresentationtcmmalignancyimagelayermalignancy_risklungwet_degreelung_lobenodule_probabilitylung_segmentcalcificationsizecenter_densityvolumedensity_averagediameterdensity_maxshapedensity_minimageInfosuggestionis_nextnext_timetag_setdeleted
+        from reports
+        where report_id = #{reportId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ReportsMap">
+        select
+        report_idpatient_namepatient_birthdaypatient_agepatient_idpatient_gendercheck_timedoctor_namediagnosis_timecheck_itemcheck_equipmentresultrisk_levelctrlocationnaturerepresentationtcmmalignancyimagelayermalignancy_risklungwet_degreelung_lobenodule_probabilitylung_segmentcalcificationsizecenter_densityvolumedensity_averagediameterdensity_maxshapedensity_minimageInfosuggestionis_nextnext_timetag_setdeleted
+        from reports
+        <where>
+            <if test="reportId != null and reportId != ''">
+                and report_id = #{reportId}
+            </if>
+            <if test="patientName != null and patientName != ''">
+                and patient_name = #{patientName}
+            </if>
+            <if test="patientBirthday != null">
+                and patient_birthday = #{patientBirthday}
+            </if>
+            <if test="patientAge != null and patientAge != ''">
+                and patient_age = #{patientAge}
+            </if>
+            <if test="patientId != null and patientId != ''">
+                and patient_id = #{patientId}
+            </if>
+            <if test="patientGender != null and patientGender != ''">
+                and patient_gender = #{patientGender}
+            </if>
+            <if test="checkTime != null">
+                and check_time = #{checkTime}
+            </if>
+            <if test="doctorName != null and doctorName != ''">
+                and doctor_name = #{doctorName}
+            </if>
+            <if test="diagnoseTime != null">
+                and diagnosis_time = #{diagnoseTime}
+            </if>
+            <if test="checkItem != null and checkItem != ''">
+                and check_item = #{checkItem}
+            </if>
+            <if test="checkEquipment != null and checkEquipment != ''">
+                and check_equipment = #{checkEquipment}
+            </if>
+            <if test="result != null and result != ''">
+                and result = #{result}
+            </if>
+            <if test="riskLevel != null and riskLevel != ''">
+                and risk_level = #{riskLevel}
+            </if>
+            <if test="ctr != null and ctr != ''">
+                and ctr = #{ctr}
+            </if>
+            <if test="location != null and location != ''">
+                and location = #{location}
+            </if>
+            <if test="nature != null and nature != ''">
+                and nature = #{nature}
+            </if>
+            <if test="representation != null and representation != ''">
+                and representation = #{representation}
+            </if>
+            <if test="tcm != null and tcm != ''">
+                and tcm = #{tcm}
+            </if>
+            <if test="malignancy != null and malignancy != ''">
+                and malignancy = #{malignancy}
+            </if>
+            <if test="image != null and image != ''">
+                and image = #{image}
+            </if>
+            <if test="layer != null and layer != ''">
+                and layer = #{layer}
+            </if>
+            <if test="malignancyRisk != null and malignancyRisk != ''">
+                and malignancy_risk = #{malignancyRisk}
+            </if>
+            <if test="lung != null and lung != ''">
+                and lung = #{lung}
+            </if>
+            <if test="wetDegree != null and wetDegree != ''">
+                and wet_degree = #{wetDegree}
+            </if>
+            <if test="lungLobe != null and lungLobe != ''">
+                and lung_lobe = #{lungLobe}
+            </if>
+            <if test="noduleProbability != null and noduleProbability != ''">
+                and nodule_probability = #{noduleProbability}
+            </if>
+            <if test="lungSegment != null and lungSegment != ''">
+                and lung_segment = #{lungSegment}
+            </if>
+            <if test="calcification != null and calcification != ''">
+                and calcification = #{calcification}
+            </if>
+            <if test="size != null and size != ''">
+                and size = #{size}
+            </if>
+            <if test="centerDensity != null and centerDensity != ''">
+                and center_density = #{centerDensity}
+            </if>
+            <if test="volume != null and volume != ''">
+                and volume = #{volume}
+            </if>
+            <if test="densityAverage != null and densityAverage != ''">
+                and density_average = #{densityAverage}
+            </if>
+            <if test="diameter != null and diameter != ''">
+                and diameter = #{diameter}
+            </if>
+            <if test="densityMax != null and densityMax != ''">
+                and density_max = #{densityMax}
+            </if>
+            <if test="shape != null and shape != ''">
+                and shape = #{shape}
+            </if>
+            <if test="densityMin != null and densityMin != ''">
+                and density_min = #{densityMin}
+            </if>
+            <if test="imageinfo != null and imageinfo != ''">
+                and imageInfo = #{imageinfo}
+            </if>
+            <if test="suggestion != null and suggestion != ''">
+                and suggestion = #{suggestion}
+            </if>
+            <if test="isNext != null and isNext != ''">
+                and is_next = #{isNext}
+            </if>
+            <if test="nextTime != null">
+                and next_time = #{nextTime}
+            </if>
+            <if test="tagSet != null and tagSet != ''">
+                and tag_set = #{tagSet}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from reports
+        <where>
+            <if test="reportId != null and reportId != ''">
+                and report_id = #{reportId}
+            </if>
+            <if test="patientName != null and patientName != ''">
+                and patient_name = #{patientName}
+            </if>
+            <if test="patientBirthday != null">
+                and patient_birthday = #{patientBirthday}
+            </if>
+            <if test="patientAge != null and patientAge != ''">
+                and patient_age = #{patientAge}
+            </if>
+            <if test="patientId != null and patientId != ''">
+                and patient_id = #{patientId}
+            </if>
+            <if test="patientGender != null and patientGender != ''">
+                and patient_gender = #{patientGender}
+            </if>
+            <if test="checkTime != null">
+                and check_time = #{checkTime}
+            </if>
+            <if test="doctorName != null and doctorName != ''">
+                and doctor_name = #{doctorName}
+            </if>
+            <if test="diagnosisTime != null">
+                and diagnosis_time = #{diagnosisTime}
+            </if>
+            <if test="checkItem != null and checkItem != ''">
+                and check_item = #{checkItem}
+            </if>
+            <if test="checkEquipment != null and checkEquipment != ''">
+                and check_equipment = #{checkEquipment}
+            </if>
+            <if test="result != null and result != ''">
+                and result = #{result}
+            </if>
+            <if test="riskLevel != null and riskLevel != ''">
+                and risk_level = #{riskLevel}
+            </if>
+            <if test="ctr != null and ctr != ''">
+                and ctr = #{ctr}
+            </if>
+            <if test="location != null and location != ''">
+                and location = #{location}
+            </if>
+            <if test="nature != null and nature != ''">
+                and nature = #{nature}
+            </if>
+            <if test="representation != null and representation != ''">
+                and representation = #{representation}
+            </if>
+            <if test="tcm != null and tcm != ''">
+                and tcm = #{tcm}
+            </if>
+            <if test="malignancy != null and malignancy != ''">
+                and malignancy = #{malignancy}
+            </if>
+            <if test="image != null and image != ''">
+                and image = #{image}
+            </if>
+            <if test="layer != null and layer != ''">
+                and layer = #{layer}
+            </if>
+            <if test="malignancyRisk != null and malignancyRisk != ''">
+                and malignancy_risk = #{malignancyRisk}
+            </if>
+            <if test="lung != null and lung != ''">
+                and lung = #{lung}
+            </if>
+            <if test="wetDegree != null and wetDegree != ''">
+                and wet_degree = #{wetDegree}
+            </if>
+            <if test="lungLobe != null and lungLobe != ''">
+                and lung_lobe = #{lungLobe}
+            </if>
+            <if test="noduleProbability != null and noduleProbability != ''">
+                and nodule_probability = #{noduleProbability}
+            </if>
+            <if test="lungSegment != null and lungSegment != ''">
+                and lung_segment = #{lungSegment}
+            </if>
+            <if test="calcification != null and calcification != ''">
+                and calcification = #{calcification}
+            </if>
+            <if test="size != null and size != ''">
+                and size = #{size}
+            </if>
+            <if test="centerDensity != null and centerDensity != ''">
+                and center_density = #{centerDensity}
+            </if>
+            <if test="volume != null and volume != ''">
+                and volume = #{volume}
+            </if>
+            <if test="densityAverage != null and densityAverage != ''">
+                and density_average = #{densityAverage}
+            </if>
+            <if test="diameter != null and diameter != ''">
+                and diameter = #{diameter}
+            </if>
+            <if test="densityMax != null and densityMax != ''">
+                and density_max = #{densityMax}
+            </if>
+            <if test="shape != null and shape != ''">
+                and shape = #{shape}
+            </if>
+            <if test="densityMin != null and densityMin != ''">
+                and density_min = #{densityMin}
+            </if>
+            <if test="imageinfo != null and imageinfo != ''">
+                and imageInfo = #{imageinfo}
+            </if>
+            <if test="suggestion != null and suggestion != ''">
+                and suggestion = #{suggestion}
+            </if>
+            <if test="isNext != null and isNext != ''">
+                and is_next = #{isNext}
+            </if>
+            <if test="nextTime != null">
+                and next_time = #{nextTime}
+            </if>
+            <if test="tagSet != null and tagSet != ''">
+                and tag_set = #{tagSet}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted}
+            </if>
+        </where>
+    </select>
+
+    <!--通过主键修改数据-->
+    <update id="updateByDto">
+        update reports
+        <set>
+            <if test="patientName != null and patientName != ''">
+                patient_name = #{patientName},
+            </if>
+            <if test="patientBirthday != null">
+                patient_birthday = #{patientBirthday},
+            </if>
+            <if test="patientAge != null and patientAge != ''">
+                patient_age = #{patientAge},
+            </if>
+            <if test="patientId != null and patientId != ''">
+                patient_id = #{patientId},
+            </if>
+            <if test="patientGender != null and patientGender != ''">
+                patient_gender = #{patientGender},
+            </if>
+            <if test="checkTime != null">
+                check_time = #{checkTime},
+            </if>
+            <if test="doctorName != null and doctorName != ''">
+                doctor_name = #{doctorName},
+            </if>
+            <if test="diagnoseTime != null">
+                diagnose_time = #{diagnoseTime},
+            </if>
+            <if test="checkItem != null and checkItem != ''">
+                check_item = #{checkItem},
+            </if>
+            <if test="checkEquipment != null and checkEquipment != ''">
+                check_equipment = #{checkEquipment},
+            </if>
+            <if test="isNext != null and isNext != ''">
+                is_next = #{isNext},
+            </if>
+            <if test="nextTime != null">
+                next_time = #{nextTime},
+            </if>
+            <if test="tagSet != null and tagSet != ''">
+                tag_set = #{tagSet},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted},
+            </if>
+            <if test="diagnosticLogout != null">
+                diagnostic_logout = #{diagnosticLogout},
+            </if>
+            <if test="therapyMethod != null">
+                therapy_method = #{therapyMethod},
+            </if>
+            <if test="curativeEffect != null">
+                curative_effect = #{curativeEffect},
+            </if>
+        </set>
+        where report_id = #{reportId}
+    </update>
+    <select id="checkExist" resultType="java.lang.Integer">
+        select count(*)
+        from reports
+        where report_id = #{reportId} limit 1
+    </select>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from reports where report_id = #{reportId}
+    </delete>
+    <select id="selectById" >
+        select * from reports where report_id = #{reportId}
+    </select>
+    <select id="selectByDoctorId" >
+        select * from reports where doctor_id = #{doctorId}
+    </select>
+    <select id="getQuery" resultType="com.xju.hospital.entity.Report">
+        SELECT
+        r.patient_id,
+        p.admission_number,
+        r.*,
+        DATEDIFF(r.next_time, CURRENT_DATE) AS days_until_next_time
+        FROM
+        patient AS p
+        JOIN
+        reports AS r
+        ON
+        p.admission_number = r.patient_id
+        WHERE
+        DATEDIFF(r.next_time, CURRENT_DATE) &lt;= 7 AND r.next_time>=CURRENT_DATE
+        ORDER BY
+        r.next_time;
+    </select>
+    <select id="queryAll" resultType="com.xju.hospital.entity.Report">
+        SELECT p.doctor_id, p.patient_id, r.*
+        FROM patient AS p
+        JOIN reports AS r ON p.patient_id = r.patient_id
+        limit #{offset},#{limit}
+    </select>
+    <select id="queryByTimeAndId" resultType="com.xju.hospital.entity.Report">
+    <![CDATA[
+        SELECT * FROM reports WHERE patient_id = #{patientId} and patient_type = "肺结节" order by next_time ASC limit #{pageIndex},#{pageSize}
+        ]]>
+    </select>
+    <select id="queryByTimeAndIdBigger" resultType="com.xju.hospital.entity.Report">
+    <![CDATA[
+        SELECT * FROM reports WHERE patient_id = #{patientId} AND next_time > CURDATE()
+        ]]>
+    </select>
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT * FROM reports WHERE patient_id = #{patientId}
+    </select>
+    <resultMap type="com.xju.hospital.Vo.SearchVo" id="searchVo">
+        <result property="reportId" column="report_id" jdbcType="VARCHAR"/>
+        <result property="patientName" column="patient_name" jdbcType="VARCHAR"/>
+        <result property="patientBirthday" column="patient_birthday" jdbcType="TIMESTAMP"/>
+        <result property="patientAge" column="patient_age" jdbcType="VARCHAR"/>
+        <result property="patientId" column="patient_id" jdbcType="VARCHAR"/>
+        <result property="patientGender" column="patient_gender" jdbcType="VARCHAR"/>
+        <result property="checkTime" column="check_time" jdbcType="TIMESTAMP"/>
+        <result property="doctorName" column="doctor_name" jdbcType="VARCHAR"/>
+        <result property="diagnoseTime" column="diagnose_time" jdbcType="TIMESTAMP"/>
+        <result property="checkItem" column="check_item" jdbcType="VARCHAR"/>
+        <result property="checkEquipment" column="check_equipment" jdbcType="VARCHAR"/>
+        <result property="isNext" column="is_next" jdbcType="VARCHAR"/>
+        <result property="nextTime" column="next_time" jdbcType="TIMESTAMP"/>
+        <result property="tagSet" column="tag_set" jdbcType="VARCHAR"/>
+        <collection property="noduleList" javaType="ArrayList" ofType="com.xju.hospital.Vo.PulmonaryNoduleVo">
+                        <result property="noduleId" column="nodule_id" jdbcType="VARCHAR"/>
+                        <result property="reportId" column="report_id" jdbcType="VARCHAR"/>
+                        <result property="result" column="result" jdbcType="VARCHAR"/>
+                        <result property="riskLevel" column="risk_level" jdbcType="VARCHAR"/>
+                        <result property="ctr" column="ctr" jdbcType="VARCHAR"/>
+                        <result property="representation" column="representation" jdbcType="VARCHAR"/>
+                        <result property="tcm" column="tcm" jdbcType="VARCHAR"/>
+                        <result property="layer" column="layer" jdbcType="VARCHAR"/>
+                        <result property="malignancy" column="malignancy" jdbcType="VARCHAR"/>
+                        <result property="wetDegree" column="wet_degree" jdbcType="VARCHAR"/>
+                        <result property="malignancyRisk" column="malignancy_risk" jdbcType="VARCHAR"/>
+                        <result property="size" column="size" jdbcType="VARCHAR"/>
+                        <result property="calcification" column="calcification" jdbcType="VARCHAR"/>
+                        <result property="shape" column="shape" jdbcType="VARCHAR"/>
+                        <result property="volume" column="volume" jdbcType="VARCHAR"/>
+                        <result property="diameter" column="diameter" jdbcType="VARCHAR"/>
+                        <result property="densityMax" column="density_max" jdbcType="VARCHAR"/>
+                        <result property="densityAverage" column="density_average" jdbcType="VARCHAR"/>
+                        <result property="densityMin" column="density_min" jdbcType="VARCHAR"/>
+                        <result property="centerDensity" column="center_density" jdbcType="VARCHAR"/>
+                        <result property="postOpDiagnosis" column="post_op_diagnosis" jdbcType="VARCHAR"/>
+                        <result property="lungSegment" column="lung_segment" jdbcType="VARCHAR"/>
+                        <result property="lung" column="lung" jdbcType="VARCHAR"/>
+                        <result property="noduleProbability" column="nodule_probability" jdbcType="VARCHAR"/>
+                        <result property="suggestion" column="suggestion" jdbcType="VARCHAR"/>
+                        <result property="image" column="image" jdbcType="VARCHAR"/>
+                        <result property="lungLobe" column="lung_lobe" jdbcType="VARCHAR"/>
+                        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+    <select id="queryByDetails" resultMap="searchVo">
+        select r.*,pn.* from reports as r,pulmonary_nodule as pn
+        where r.report_id = pn.report_id
+        <if test="tags != null and tags != ''">
+            and r.tag_set like concat('%',#{tags},'%')
+        </if>
+        <if test="patientName != null and patientName != ''">
+            and r.patient_name like concat('%',#{patientName},'%')
+        </if>
+        <if test="doctorName != null and doctorName != ''">
+            and r.doctor_name like concat('%',#{doctorName},'%')
+        </if>
+        <if test="representation != null and representation != ''">
+            and pn.representation = #{representation}
+        </if>
+        <if test="centerDensity != null and centerDensity != ''">
+            and pn.center_density = #{centerDensity}
+        </if>
+        <if test="tcm != null and tcm != ''">
+            and pn.tcm = #{tcm}
+        </if>
+        <if test="densityMax != null and densityMax != ''">
+            and pn.density_max = #{densityMax}
+        </if>
+        <if test="densityMin != null and densityMin != ''">
+            and pn.density_min = #{densityMin}
+        </if>
+        <if test="densityAverage != null and densityAverage != ''">
+            and pn.density_average = #{densityAverage}
+        </if>
+        <if test="patientBirthday != null">
+            and r.patient_birthday = #{patientBirthday}
+        </if>
+        <if test="patientAge != null and patientAge != ''">
+            and r.patient_age = #{patientAge}
+        </if>
+        <if test="patientGender != null and patientGender != ''">
+            and r.patient_gender = #{patientGender}
+        </if>
+        <if test="patientId != null and patientId != ''">
+            and r.patient_id like concat('%',#{patientId},'%')
+        </if>
+        <if test="patientType != null and patientType != ''">
+            and r.patient_type = #{patientType}
+        </if>
+        <if test="checkTime != null">
+            and r.check_time = #{checkTime}
+        </if>
+        <if test="diagnoseTime != null">
+            and r.diagnose_time = #{diagnoseTime}
+        </if>
+        <if test="checkItem != null">
+            and r.check_item = #{checkItem}
+        </if>
+        <if test="checkEquipment != null and checkEquipment != ''">
+            and r.check_equipment = #{checkEquipment}
+        </if>
+        <if test="isNext != null and isNext != ''">
+            and r.is_next = #{isNext}
+        </if>
+        <if test="nextTime != null">
+            and r.next_time = #{nextTime}
+        </if>
+        <if test="result != null and result != ''">
+            and pn.result = #{result}
+        </if>
+        <if test="riskLevel != null and riskLevel != ''">
+            and pn.risk_level = #{riskLevel}
+        </if>
+        <if test="ctr != null and ctr != ''">
+            and pn.ctr = #{ctr}
+        </if>
+        <if test="representation != null and representation != ''">
+            and pn.representation = #{representation}
+        </if>
+        <if test="tcm != null and tcm != ''">
+            and pn.tcm = #{tcm}
+        </if>
+        <if test="malignancy != null and malignancy != ''">
+            and pn.malignancy = #{malignancy}
+        </if>
+        <if test="image != null and image != ''">
+            and pn.image = #{image}
+        </if>
+        <if test="layer != null and layer != ''">
+            and pn.layer = #{layer}
+        </if>
+        <if test="malignancyRisk != null and malignancyRisk != ''">
+            and pn.malignancy_risk = #{malignancyRisk}
+        </if>
+        <if test="lung != null and lung != ''">
+            and pn.lung = #{lung}
+        </if>
+        <if test="wetDegree != null and wetDegree != ''">
+            and pn.wet_degree = #{wetDegree}
+        </if>
+        <if test="lungLobe != null and lungLobe != ''">
+            and pn.lung_lobe = #{lungLobe}
+        </if>
+        <if test="noduleProbability != null and noduleProbability != ''">
+            and pn.nodule_probability = #{noduleProbability}
+        </if>
+        <if test="lungSegment != null and lungSegment != ''">
+            and pn.lung_segment = #{lungSegment}
+        </if>
+        <if test="calcification != null and calcification != ''">
+            and pn.calcification = #{calcification}
+        </if>
+        <if test="size != null and size != ''">
+            and pn.size = #{size}
+        </if>
+        <if test="centerDensity != null and centerDensity != ''">
+            and pn.center_density = #{centerDensity}
+        </if>
+        <if test="volume != null and volume != ''">
+            and pn.volume = #{volume}
+        </if>
+        <if test="diameter != null and diameter != ''">
+            and pn.diameter = #{diameter}
+        </if>
+        <if test="shape != null and shape != ''">
+            and pn.shape = #{shape}
+        </if>
+        <if test="postOpDiagnosis != null and postOpDiagnosis != ''">
+            and pn.post_op_diagnosis like concat('%',#{postOpDiagnosis},'%')
+        </if>
+        <if test="suggestion != null and suggestion != ''">
+            and pn.suggestion like concat('%',#{suggestion},'%')
+        </if>
+        <if test="remark != null and remark != ''">
+            and pn.remark like concat('%',#{remark},'%')
+        </if>
+        <if test="sortMode == 1">
+            ORDER BY next_time DESC
+        </if>
+        <if test="sortMode == 2">
+            ORDER BY next_time ASC
+        </if>
+        limit #{pageIndex}, #{pageSize};
+    </select>
+    <select id="queryLimit" resultType="com.xju.hospital.entity.Report">
+        select * from reports where patient_id = #{patientId}
+        and patient_type in ("肺癌","肺结节转肺癌")
+        limit #{pageIndex},#{pageSize}
+    </select>
+</mapper>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xju.hospital.mapper.ApplyMapper">
+    <delete id="deleteById">
+        delete from apply where apply_id=#{id}
+    </delete>
+
+    <select id="getLimit" resultType="com.xju.hospital.entity.Apply">
+        select * from apply limit #{offset},#{limit}
+    </select>
+</mapper>
+

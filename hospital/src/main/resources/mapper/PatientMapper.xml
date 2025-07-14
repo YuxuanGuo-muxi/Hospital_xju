@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xju.hospital.mapper.PatientMapper">
+
+    <resultMap type="com.xju.hospital.entity.Patient" id="PatientMap">
+        <result property="patientId" column="patient_id" jdbcType="VARCHAR"/>
+        <result property="doctorId" column="doctor_id" jdbcType="VARCHAR"/>
+        <result property="patientName" column="patient_name" jdbcType="VARCHAR"/>
+        <result property="source" column="source" jdbcType="INTEGER"/>
+        <result property="patientSex" column="patient_sex" jdbcType="INTEGER"/>
+        <result property="drugName" column="drug_name" jdbcType="VARCHAR"/>
+        <result property="isSmoke" column="is_smoke" jdbcType="INTEGER"/>
+        <result property="patientAge" column="patient_age" jdbcType="INTEGER"/>
+        <result property="patientGroup" column="patient_group" jdbcType="VARCHAR"/>
+        <result property="patientWork" column="patient_work" jdbcType="VARCHAR"/>
+        <result property="patientEduLevel" column="patient_edu_level" jdbcType="VARCHAR"/>
+        <result property="patientMarriage" column="patient_marriage" jdbcType="INTEGER"/>
+        <result property="patientPregnancy" column="patient_pregnancy" jdbcType="VARCHAR"/>
+        <result property="patientAddress" column="patient_address" jdbcType="VARCHAR"/>
+        <result property="patientPhone" column="patient_phone" jdbcType="VARCHAR"/>
+        <result property="smokingYears" column="smoking_years" jdbcType="INTEGER"/>
+        <result property="smokingAmount" column="smoking_amount" jdbcType="INTEGER"/>
+        <result property="patientMalignant" column="patient_malignant" jdbcType="INTEGER"/>
+        <result property="patientAllergy" column="patient_allergy" jdbcType="INTEGER"/>
+        <result property="smokingType" column="smoking_type" jdbcType="VARCHAR"/>
+        <result property="smokingYears" column="smoking_years" jdbcType="INTEGER"/>
+        <result property="smokingAmount" column="smoking_amount" jdbcType="INTEGER"/>
+        <result property="isQuit" column="is_quit" jdbcType="INTEGER"/>
+        <result property="quitYears" column="quit_years" jdbcType="INTEGER"/>
+        <result property="medicalHistory" column="medical_history" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="PatientMap">
+        select
+        patient_iddoctor_idpatient_namesourcepatient_sexpatient_agepatient_grouppatient_workpatient_edu_levelpatient_marriagepatient_pregnancypatient_addresspatient_phonepatient_malignantpatient_allergydrug_nameis_smokesmoking_typesmoking_yearssmoking_amountis_quitquit_yearsmedical_historyis_
+        recover
+        from patient
+        <where>
+            <if test="patientId != null and patientId != ''">
+                and patient_id = #{patientId}
+            </if>
+            <if test="doctorId != null and doctorId != ''">
+                and doctor_id = #{doctorId}
+            </if>
+            <if test="patientName != null and patientName != ''">
+                and patient_name = #{patientName}
+            </if>
+            <if test="source != null">
+                and source = #{source}
+            </if>
+            <if test="patientSex != null">
+                and patient_sex = #{patientSex}
+            </if>
+            <if test="patientAge != null">
+                and patient_age = #{patientAge}
+            </if>
+            <if test="patientGroup != null and patientGroup != ''">
+                and patient_group = #{patientGroup}
+            </if>
+            <if test="patientWork != null and patientWork != ''">
+                and patient_work = #{patientWork}
+            </if>
+            <if test="patientEduLevel != null and patientEduLevel != ''">
+                and patient_edu_level = #{patientEduLevel}
+            </if>
+            <if test="patientMarriage != null">
+                and patient_marriage = #{patientMarriage}
+            </if>
+            <if test="patientPregnancy != null and patientPregnancy != ''">
+                and patient_pregnancy = #{patientPregnancy}
+            </if>
+            <if test="patientAddress != null and patientAddress != ''">
+                and patient_address = #{patientAddress}
+            </if>
+            <if test="patientPhone != null and patientPhone != ''">
+                and patient_phone = #{patientPhone}
+            </if>
+            <if test="patientMalignant != null">
+                and patient_malignant = #{patientMalignant}
+            </if>
+            <if test="patientAllergy != null">
+                and patient_allergy = #{patientAllergy}
+            </if>
+            <if test="drugName != null and drugName != ''">
+                and drug_name = #{drugName}
+            </if>
+            <if test="isSmoke != null">
+                and is_smoke = #{isSmoke}
+            </if>
+            <if test="smokingType != null and smokingType != ''">
+                and smoking_type = #{smokingType}
+            </if>
+            <if test="smokingYears != null">
+                and smoking_years = #{smokingYears}
+            </if>
+            <if test="smokingAmount != null">
+                and smoking_amount = #{smokingAmount}
+            </if>
+            <if test="isQuit != null">
+                and is_quit = #{isQuit}
+            </if>
+            <if test="quitYears != null">
+                and quit_years = #{quitYears}
+            </if>
+            <if test="medicalHistory != null and medicalHistory != ''">
+                and medical_history = #{medicalHistory}
+            </if>
+            <if test="is_ recover != null">
+                and is_ recover = #{is_ recover}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <select id="query" resultType="com.xju.hospital.Vo.PatientVO">
+        select pt.patient_id, t.tag_name, r.next_time, r.result, r.representation, r.image, p.patient_name
+        from patient_tags as pt,
+             reports as r,
+             tags as t,
+             patient as p
+        where r.patient_id = pt.patient_id
+          and t.tag_id = pt.tag_id
+          and p.patient_id = pt.patient_id
+          and p.doctor_id = #{doctorId};
+    </select>
+    <select id="queryAsc" resultType="com.xju.hospital.Vo.PatientVO">
+        select pt.patient_id, t.tag_name, r.next_time, r.result, r.representation, r.image, p.patient_name
+        from patient_tags as pt,
+             reports as r,
+             tags as t,
+             patient as p
+        where r.patient_id = pt.patient_id
+          and t.tag_id = pt.tag_id
+          and p.patient_id = pt.patient_id
+          and p.doctor_id = #{doctorId}
+        ORDER BY r.next_time ASC;
+    </select>
+    <select id="queryDesc" resultType="com.xju.hospital.Vo.PatientVO">
+        select pt.patient_id, t.tag_name, r.next_time, r.result, r.representation, r.image, p.patient_name
+        from patient_tags as pt,
+             reports as r,
+             tags as t,
+             patient as p
+        where r.patient_id = pt.patient_id
+          and t.tag_id = pt.tag_id
+          and p.patient_id = pt.patient_id
+          and p.doctor_id = #{doctorId}
+        ORDER BY r.next_time DESC;
+    </select>
+    <select id="queryLimit" resultType="com.xju.hospital.Vo.PatientVO">
+        select pt.patient_id, t.tag_name, r.next_time, r.result, r.representation, r.image, p.patient_name
+        from patient_tags as pt,
+             reports as r,
+             tags as t,
+             patient as p
+        where r.patient_id = pt.patient_id
+          and t.tag_id = pt.tag_id
+          and p.patient_id = pt.patient_id
+            LIMIT #{offset}
+            , #{limit};
+    </select>
+    <select id="checkIdExists" resultType="java.lang.Integer">
+        select count(*)
+        from patient
+        where patient_id = #{patientId} limit 1
+    </select>
+    <select id="getPatients" resultType="com.xju.hospital.entity.Patient">
+        select *
+        from patient limit #{offset},#{limit}
+    </select>
+    <!--通过主键修改数据-->
+    <update id="update">
+        update patient
+        <set>
+            <if test="doctorId != null and doctorId != ''">
+                doctor_id = #{doctorId},
+            </if>
+            <if test="patientName != null and patientName != ''">
+                patient_name = #{patientName},
+            </if>
+            <if test="source != null">
+                source = #{source},
+            </if>
+            <if test="patientSex != null">
+                patient_sex = #{patientSex},
+            </if>
+            <if test="patientAge != null">
+                patient_age = #{patientAge},
+            </if>
+            <if test="patientGroup != null and patientGroup != ''">
+                patient_group = #{patientGroup},
+            </if>
+            <if test="patientWork != null and patientWork != ''">
+                patient_work = #{patientWork},
+            </if>
+            <if test="patientEduLevel != null and patientEduLevel != ''">
+                patient_edu_level = #{patientEduLevel},
+            </if>
+            <if test="patientMarriage != null">
+                patient_marriage = #{patientMarriage},
+            </if>
+            <if test="patientPregnancy != null and patientPregnancy != ''">
+                patient_pregnancy = #{patientPregnancy},
+            </if>
+            <if test="patientAddress != null and patientAddress != ''">
+                patient_address = #{patientAddress},
+            </if>
+            <if test="patientPhone != null and patientPhone != ''">
+                patient_phone = #{patientPhone},
+            </if>
+            <if test="patientMalignant != null">
+                patient_malignant = #{patientMalignant},
+            </if>
+            <if test="patientAllergy != null">
+                patient_allergy = #{patientAllergy},
+            </if>
+            <if test="drugName != null and drugName != ''">
+                drug_name = #{drugName},
+            </if>
+            <if test="isSmoke != null">
+                is_smoke = #{isSmoke},
+            </if>
+            <if test="smokingType != null and smokingType != ''">
+                smoking_type = #{smokingType},
+            </if>
+            <if test="smokingYears != null">
+                smoking_years = #{smokingYears},
+            </if>
+            <if test="smokingAmount != null">
+                smoking_amount = #{smokingAmount},
+            </if>
+            <if test="isQuit != null">
+                is_quit = #{isQuit},
+            </if>
+            <if test="quitYears != null">
+                quit_years = #{quitYears},
+            </if>
+            <if test="medicalHistory != null and medicalHistory != ''">
+                medical_history = #{medicalHistory},
+            </if>
+            <if test="is_ recover != null">
+                is_ recover = #{is_ recover},
+            </if>
+        </set>
+        where patient_id = #{patientId}
+    </update>
+    <update id="updateCancerInfo">
+        update reports
+        <set>
+            <if test="diagnosticLogout != null and diagnosticLogout != ''">
+                diagnostic_logout = #{diagnosticLogout},
+            </if>
+            <if test="curativeEffect != null and curativeEffect != ''">
+                curative_effect = #{curativeEffect},
+            </if>
+            <if test="therapyMethod != null and therapyMethod != ''">
+                therapy_method = #{therapyMethod}
+            </if>
+        </set>
+        where patient_id = #{patientId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from patient
+        where patient_id = #{patientId}
+    </delete>
+
+</mapper>
+

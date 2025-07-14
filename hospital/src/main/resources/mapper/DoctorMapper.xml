@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xju.hospital.mapper.DoctorMapper">
+    <delete id="deleteByDoctorId">
+        delete from doctor where doctor_id = #{doctorId}
+    </delete>
+    <select id="getAll" resultType="com.xju.hospital.entity.Doctor">
+        select doctor_id,doctor_name,password from doctor LIMIT #{offset},#{limit};
+    </select>
+</mapper>
+

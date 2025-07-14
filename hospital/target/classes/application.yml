@@ -1,0 +1,34 @@
+server:
+  port: 8081
+spring:
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    cache: false
+    suffix: .html
+    mode: HTML
+  application:
+    name: user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hospital?useSSL=false&serverTimezone=UTC
+    username: root
+    password: gohou7feng
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.user.message.Entity
+  mapper-locations: classpath:mybatis/mapper/*.xml
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    accesskeyId: LTAI5tFdpkxnoQBj48Rk7AVj
+    accesskeySecret: tK3S51zmIppcFJ9oET4iKOT7up11KL
+    bucketName: sky-msz

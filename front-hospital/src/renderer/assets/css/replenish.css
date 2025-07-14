@@ -1,0 +1,30 @@
+.sign_up {
+    margin: 10px;
+    text-decoration: underline;
+}
+
+.sign_up:hover {
+    color: #09c41c;
+}
+
+.title {
+    margin: 50px 0px 60px 0px;
+    height: 150px;
+}
+
+.login {
+    margin: 10px;
+    text-decoration: underline;
+}
+#heDui-error {
+    color: #bc0f0f;
+    margin-top: 10px;
+}
+.custom-hr {
+    border: none; /* 删除默认的边框 */
+    height: 1px; /* 设置分割线高度 */
+    background-color: rgba(0, 0, 0, 0.284); /* 设置分割线颜色 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* 可选：如果需要添加一些额外的样式，可以在这里添加 */
+}

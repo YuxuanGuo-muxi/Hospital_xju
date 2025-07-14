@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xju.hospital.mapper.PulmonaryNoduleMapper">
+    <delete id="deleteByReportId">
+        delete from pulmonary_nodule where report_id = #{reportId}
+    </delete>
+
+    <select id="checkIdExists" resultType="java.lang.Integer">
+        select count(*) from pulmonary_nodule where nodule_id = #{noduleId} limit 1
+    </select>
+</mapper>
+
