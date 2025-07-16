@@ -4,7 +4,6 @@
     <delete id="deleteById">
         delete from apply where apply_id=#{id}
     </delete>
-
     <select id="getLimit" resultType="com.xju.hospital.entity.Apply">
         select * from apply limit #{offset},#{limit}
     </select>

@@ -4,6 +4,7 @@
     <delete id="deleteByDoctorId">
         delete from doctor where doctor_id = #{doctorId}
     </delete>
+    
     <select id="getAll" resultType="com.xju.hospital.entity.Doctor">
         select doctor_id,doctor_name,password from doctor LIMIT #{offset},#{limit};
     </select>

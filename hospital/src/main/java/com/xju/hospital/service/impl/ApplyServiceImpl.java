@@ -13,14 +13,16 @@ import java.util.List;
 public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements ApplyService {
     @Autowired
     private ApplyMapper applyMapper;
+
     // 分页查询
     @Override
     public List<Apply> getLimit(int offset, int limit) {
-        return applyMapper.getLimit(offset,limit);
+        return applyMapper.getLimit(offset, limit);
     }
+
     // 根据id删除
     @Override
     public boolean deleteById(String id) {
-        return applyMapper.deleteById(id)>0;
+        return applyMapper.deleteById(id) > 0;
     }
 }
