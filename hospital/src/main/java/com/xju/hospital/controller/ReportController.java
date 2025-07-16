@@ -130,7 +130,6 @@ public class ReportController {
         return true;
     }
 
-
     // 上传图片
     @PostMapping("/upload")
     public String handleUserUpload(@RequestBody MultipartFile file) throws IOException {
