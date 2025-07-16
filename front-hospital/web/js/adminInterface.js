@@ -83,12 +83,10 @@ let patientPageListVue = new Vue({
     methods: {
         first : function() {
             this.pageIndex -= 1;
-            // console.log(this.pageIndex);
             patientListVue.jsonPatientList = patientListVue.dataPatientList(this.pageIndex);
         },
         third : function() {
             this.pageIndex += 1;
-            // console.log(this.pageIndex);
             patientListVue.jsonPatientList = patientListVue.dataPatientList(this.pageIndex);
         }
     }
@@ -163,12 +161,10 @@ let doctorPageListVue = new Vue({
     methods: {
         first : function() {
             this.pageIndex -= 1;
-            // console.log(this.pageIndex);
             doctorListVue.jsonDoctorList = doctorListVue.dataDoctorList(this.pageIndex);
         },
         third : function() {
             this.pageIndex += 1;
-            // console.log(this.pageIndex);
             doctorListVue.jsonDoctorList = doctorListVue.dataDoctorList(this.pageIndex);
         }
     }
@@ -233,7 +229,6 @@ let doctorApplyListVue = new Vue({
     },
     mounted() {
         this.jsonDoctorApplyList = this.dataDoctorApplyList();
-        // console.log(this.jsonDoctorApplyList);
     }
 })
 //医生申请页码列表
@@ -246,12 +241,10 @@ let doctorApplyPageListVue = new Vue({
     methods: {
         first : function() {
             this.pageIndex -= 1;
-            // console.log(this.pageIndex);
             doctorApplyListVue.jsonDoctorApplyList = doctorApplyListVue.dataDoctorApplyList(this.pageIndex);
         },
         third : function() {
             this.pageIndex += 1;
-            // console.log(this.pageIndex);
             doctorApplyListVue.jsonDoctorApplyList = doctorApplyListVue.dataDoctorApplyList(this.pageIndex);
         }
     }
@@ -325,12 +318,10 @@ let tagPageListVue = new Vue({
     methods: {
         first : function() {
             this.pageIndex -= 1;
-            // console.log(this.pageIndex);
             tagListVue.jsonTagList = tagListVue.dataTagList(this.pageIndex);
         },
         third : function() {
             this.pageIndex += 1;
-            // console.log(this.pageIndex);
             tagListVue.jsonTagList = tagListVue.dataTagList(this.pageIndex);
         }
     }
@@ -355,7 +346,6 @@ let createTagVue = new Vue({
             if(this.tagName == ""){
                 alert("标签名称不能为空！");
             }else{
-                // console.log(this.tagName);
                 this.createTag(this.tagName);
             }
         }
