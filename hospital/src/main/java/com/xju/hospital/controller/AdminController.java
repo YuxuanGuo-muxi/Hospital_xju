@@ -37,6 +37,7 @@ public class AdminController {
     private ReportService reportService;
     @Autowired
     private PulmonaryNoduleService pulmonaryNoduleService;
+    
     /**
      * 分页查询医生信息
      *
