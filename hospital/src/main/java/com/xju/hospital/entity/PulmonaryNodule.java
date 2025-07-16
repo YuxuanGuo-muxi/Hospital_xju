@@ -64,5 +64,4 @@ public class PulmonaryNodule {
     private String remark;
     // 是否删除
     private Integer deleted;
-
 }
