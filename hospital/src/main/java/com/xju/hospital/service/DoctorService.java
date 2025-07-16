@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * (Doctor)表服务接口
- *
  */
 public interface DoctorService extends IService<Doctor> {
     List<Doctor>getAll(int offset,int limit);
