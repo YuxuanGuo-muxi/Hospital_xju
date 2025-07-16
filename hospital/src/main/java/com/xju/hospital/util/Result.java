@@ -9,7 +9,6 @@ import java.util.Map;
 @Data
 public class Result {
 
-
     @JsonIgnore
     private Map map;
 
@@ -20,7 +19,6 @@ public class Result {
 
     //消息
     private String message;
-
 
 
     //消息常用编码
@@ -56,8 +54,6 @@ public class Result {
     public static Result fail() {
         return new Result(FAIL,"","失败");
     }
-
-
 
 
     //构造的map
