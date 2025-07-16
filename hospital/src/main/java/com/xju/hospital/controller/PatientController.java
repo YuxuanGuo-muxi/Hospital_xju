@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-
 @RestController
 @RequestMapping("/api/patient")
 @Slf4j
@@ -98,6 +97,7 @@ public class PatientController {
                 result.add(patientVO);
             }
         }
+        
         int count = 0;
         for (Map.Entry<String,List<String>> entry : hashMap.entrySet()) {
             List<String> tags = entry.getValue();
