@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  *  (Patient)表服务接口
- *
  */
 public interface PatientService extends IService<Patient> {
 
