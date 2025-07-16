@@ -15,7 +15,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * 阿里云 OSS 工具类，用于上传图片到OSS
+ * 阿里云OSS工具类，用于上传图片到OSS
  */
 @Component
 public class AliOSSUtils {
