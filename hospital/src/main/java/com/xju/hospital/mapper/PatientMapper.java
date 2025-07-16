@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * (Patient)表数据库访问层，由MyBatis Generator工具自动生成
- *
  */
 @Mapper
 public interface PatientMapper extends BaseMapper<Patient> {
