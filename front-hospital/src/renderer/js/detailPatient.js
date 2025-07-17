@@ -3,6 +3,7 @@ let special_work = ['miner','cementer','spinner','other']
 let unspecial_work = ['worker','farmer','intellectual','custodian','service','retirement','unemployed','laid_off']
 let jsonDataChange = {}
 let jsonPatientId = {}
+
 let jsonPatientRecodeInfo = {}
 let jsonSearchRecodeInfo = {
     "patient_id":"",
