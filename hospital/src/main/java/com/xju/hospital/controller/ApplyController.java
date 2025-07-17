@@ -27,4 +27,5 @@ public class ApplyController {
         int success = applyService.getBaseMapper().insert(apply);
         return success>0? Result.ok("申请成功"):Result.fail();
     }
+    
 }

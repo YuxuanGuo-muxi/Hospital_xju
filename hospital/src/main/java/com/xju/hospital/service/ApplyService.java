@@ -10,3 +10,5 @@ public interface ApplyService extends IService<Apply> {
     List<Apply>getLimit(int offset,int limit);
     boolean deleteById(String id);
 }
+
+
