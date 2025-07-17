@@ -13,6 +13,7 @@ let patientListVue = new Vue({
                 alert("患者删除失败！");
             })
         },
+        
         // 获取患者列表数据
         dataPatientList : function(pageIndex = 0){
             axios.get("http://localhost:8080/adminInterface/dataPatientList?pageIndex="+pageIndex).then(function(response){
