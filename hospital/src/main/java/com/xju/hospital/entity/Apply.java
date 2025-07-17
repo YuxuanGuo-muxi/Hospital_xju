@@ -9,4 +9,6 @@ public class Apply {
     private String applyId;
     private String password;
     private String comment;
+
+    
 }

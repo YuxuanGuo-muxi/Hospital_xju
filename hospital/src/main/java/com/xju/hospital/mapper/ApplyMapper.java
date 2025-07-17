@@ -12,4 +12,6 @@ public interface ApplyMapper extends BaseMapper<Apply> {
     List<Apply> getLimit(@Param("offset") int offset, @Param("limit") int limit);
 
     int deleteById(@Param("id") String id);
+
+    
 }

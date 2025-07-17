@@ -10,3 +10,5 @@ public interface ApplyService extends IService<Apply> {
 
     boolean deleteById(String id);
 }
+
+
