@@ -55,7 +55,6 @@ public class Result {
         return new Result(FAIL,"","失败");
     }
 
-
     //构造的map
     @JsonIgnore
     public  Map<Object,Object> resMap = new HashMap<>();
