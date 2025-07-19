@@ -15,6 +15,7 @@ const router = useRouter(); // 初始化 router
 const setAccount = (account) => {
   store.commit('setAccount', account);
 }
+
 // 登录提交
 const loginSubmit = (event) => {
   event.preventDefault();
