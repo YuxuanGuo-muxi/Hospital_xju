@@ -112,6 +112,7 @@ const allergyForm = (patientAllergyValue) => {
 const checkSource = (sourceValue) => {
     source.value = sourceValue;
 }
+
 //获取吸烟史信息表的信息
 const checkSmoking = (isSmokeValue) => {
     isSmoke.value = isSmokeValue;
