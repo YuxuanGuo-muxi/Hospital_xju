@@ -50,6 +50,7 @@ const registerSubmit = (event) => {
     });
   }
 }
+
 let passwordType = ref("password");
 </script>
 
