@@ -303,6 +303,7 @@ const patientIdConfirm = async (event, patientId) => {
     // alert("请检查网络连接或联系管理员！");
   }
 };
+
 //结节图像菜单
 let CTImageMenu = ref(1);
 //结节图像列表
