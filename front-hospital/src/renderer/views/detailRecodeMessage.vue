@@ -64,6 +64,7 @@ onMounted(async () => {
   console.log('recodeInfoForm.noduleList',recodeInfoForm.value.noduleList);
   noduleList.value = recodeInfoForm.value.noduleList;
 });
+
 //表单数据
 let recodeInfoForm = ref({
   patientName: "",
