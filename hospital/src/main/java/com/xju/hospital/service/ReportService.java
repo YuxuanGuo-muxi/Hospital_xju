@@ -6,7 +6,6 @@ import com.xju.hospital.Dto.PatientPageDto;
 import com.xju.hospital.Vo.SearchVo;
 import com.xju.hospital.entity.Query;
 import com.xju.hospital.entity.Report;
-
 import java.util.List;
 
 public interface ReportService extends IService<Report> {
