@@ -10,6 +10,7 @@ import com.xju.hospital.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -97,7 +98,7 @@ public class PatientController {
                 result.add(patientVO);
             }
         }
-        
+
         int count = 0;
         for (Map.Entry<String,List<String>> entry : hashMap.entrySet()) {
             List<String> tags = entry.getValue();
