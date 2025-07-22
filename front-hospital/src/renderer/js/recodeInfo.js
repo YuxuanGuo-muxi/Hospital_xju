@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
     function submitFormData(jsonString) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "http://localhost:8080/baseMessage/messageLoad", true);
