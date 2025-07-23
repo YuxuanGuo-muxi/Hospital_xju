@@ -41,6 +41,7 @@ new Vue({
                 alert("提交失败！");
             });
         },
+        
         baseForm: function () {
             let flag1 = true;
             let baseFormData = {
