@@ -125,6 +125,7 @@
           and p.patient_id = pt.patient_id
           and p.doctor_id = #{doctorId};
     </select>
+    
     <select id="queryAsc" resultType="com.xju.hospital.Vo.PatientVO">
         select pt.patient_id, t.tag_name, r.next_time, r.result, r.representation, r.image, p.patient_name
         from patient_tags as pt,
