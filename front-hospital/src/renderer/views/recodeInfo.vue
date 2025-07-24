@@ -317,6 +317,7 @@ const saveCTImage = (event) => {
     type: 'success',
     message: '已保存结节图像'
   })
+  
   // console.log('index:',index);
   // console.log('CTImageList.value.length:',CTImageList.value.length);
   // console.log(CTImageList.value[index]);
