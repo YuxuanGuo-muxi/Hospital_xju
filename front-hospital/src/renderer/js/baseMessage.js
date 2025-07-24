@@ -41,7 +41,7 @@ new Vue({
                 alert("提交失败！");
             });
         },
-        
+
         baseForm: function () {
             let flag1 = true;
             let baseFormData = {
@@ -139,7 +139,6 @@ new Vue({
             this.josnSmokingFormData = smokingFormData;
             return flag3;
         },
-
         submitForm: function (event) {
             event.preventDefault();
             this.flag = this.baseForm() && this.allergyForm(this.patientAllergy) && this.smokingForm(this.isSmoke,this.smokingType,this.isQuit) && this.medicalHistory != "";
