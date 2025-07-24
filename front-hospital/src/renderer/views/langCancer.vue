@@ -18,6 +18,7 @@ let baseMessageForm = ref({
   curativeEffect: "",//疗效
   therapyMethod: "",//治疗方式
 });
+
 //当前时间
 const currentTime = ref('');
 //挂载函数
