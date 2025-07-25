@@ -88,6 +88,7 @@
             <if test="tcm != null and tcm != ''">
                 and tcm = #{tcm}
             </if>
+            
             <if test="malignancy != null and malignancy != ''">
                 and malignancy = #{malignancy}
             </if>
