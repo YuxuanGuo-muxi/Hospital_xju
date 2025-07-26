@@ -317,7 +317,7 @@ const saveCTImage = (event) => {
     type: 'success',
     message: '已保存结节图像'
   })
-  
+
   // console.log('index:',index);
   // console.log('CTImageList.value.length:',CTImageList.value.length);
   // console.log(CTImageList.value[index]);
@@ -327,6 +327,7 @@ const saveCTImage = (event) => {
     console.log(2);
     noduleList.value.push(JSON.parse(JSON.stringify(CTImageForm.value)));
   }
+  
   console.log('noduleList:', noduleList.value);
   CTImageForm.value = {
     result: "",
