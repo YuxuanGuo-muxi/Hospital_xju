@@ -756,12 +756,6 @@ var widget = $.widget;
  * http://api.jqueryui.com/position/
  */
 
-//>>label: Position
-//>>group: Core
-//>>description: Positions elements relative to other elements.
-//>>docs: http://api.jqueryui.com/position/
-//>>demos: http://jqueryui.com/position/
-
 
 ( function() {
 var cachedScrollbarWidth,
@@ -1073,18 +1067,12 @@ $.ui.position = {
 
 			// Element is wider than within
 			if ( data.collisionWidth > outerWidth ) {
-
-				// Element is initially over the left side of within
 				if ( overLeft > 0 && overRight <= 0 ) {
 					newOverRight = position.left + overLeft + data.collisionWidth - outerWidth -
 						withinOffset;
 					position.left += overLeft - newOverRight;
-
-				// Element is initially over right side of within
 				} else if ( overRight > 0 && overLeft <= 0 ) {
 					position.left = withinOffset;
-
-				// Element is initially over both left and right sides of within
 				} else {
 					if ( overLeft > overRight ) {
 						position.left = withinOffset + outerWidth - data.collisionWidth;
@@ -1092,16 +1080,12 @@ $.ui.position = {
 						position.left = withinOffset;
 					}
 				}
-
-			// Too far left -> align with left edge
 			} else if ( overLeft > 0 ) {
 				position.left += overLeft;
 
-			// Too far right -> align with right edge
 			} else if ( overRight > 0 ) {
 				position.left -= overRight;
 
-			// Adjust based on position and margin
 			} else {
 				position.left = max( position.left - collisionPosLeft, position.left );
 			}
@@ -1115,20 +1099,14 @@ $.ui.position = {
 				overBottom = collisionPosTop + data.collisionHeight - outerHeight - withinOffset,
 				newOverBottom;
 
-			// Element is taller than within
 			if ( data.collisionHeight > outerHeight ) {
 
-				// Element is initially over the top of within
 				if ( overTop > 0 && overBottom <= 0 ) {
 					newOverBottom = position.top + overTop + data.collisionHeight - outerHeight -
 						withinOffset;
 					position.top += overTop - newOverBottom;
-
-				// Element is initially over bottom of within
 				} else if ( overBottom > 0 && overTop <= 0 ) {
 					position.top = withinOffset;
-
-				// Element is initially over both top and bottom of within
 				} else {
 					if ( overTop > overBottom ) {
 						position.top = withinOffset + outerHeight - data.collisionHeight;
@@ -1136,16 +1114,12 @@ $.ui.position = {
 						position.top = withinOffset;
 					}
 				}
-
-			// Too far up -> align with top
 			} else if ( overTop > 0 ) {
 				position.top += overTop;
 
-			// Too far down -> align with bottom edge
 			} else if ( overBottom > 0 ) {
 				position.top -= overBottom;
 
-			// Adjust based on position and margin
 			} else {
 				position.top = max( position.top - collisionPosTop, position.top );
 			}
