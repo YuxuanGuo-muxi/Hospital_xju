@@ -309,9 +309,6 @@ $.Widget.prototype = {
 		$.each( this.classesElementLookup, function( key, value ) {
 			that._removeClass( value, key );
 		} );
-
-		// We can probably remove the unbind calls in 2.0
-		// all event bindings should go through this._on()
 		this.element
 			.off( this.eventNamespace )
 			.removeData( this.widgetFullName );
@@ -319,7 +316,6 @@ $.Widget.prototype = {
 			.off( this.eventNamespace )
 			.removeAttr( "aria-disabled" );
 
-		// Clean up events and states
 		this.bindings.off( this.eventNamespace );
 	},
 
@@ -337,13 +333,11 @@ $.Widget.prototype = {
 
 		if ( arguments.length === 0 ) {
 
-			// Don't return a reference to the internal hash
 			return $.widget.extend( {}, this.options );
 		}
 
 		if ( typeof key === "string" ) {
 
-			// Handle nested keys, e.g., "foo.bar" => { foo: { bar: ___ } }
 			options = {};
 			parts = key.split( "." );
 			key = parts.shift();
@@ -405,18 +399,8 @@ $.Widget.prototype = {
 					!currentElements.length ) {
 				continue;
 			}
-
-			// We are doing this to create a new jQuery object because the _removeClass() call
-			// on the next line is going to destroy the reference to the current elements being
-			// tracked. We need to save a copy of this collection so that we can add the new classes
-			// below.
 			elements = $( currentElements.get() );
 			this._removeClass( currentElements, classKey );
-
-			// We don't use _addClass() here, because that uses this.options.classes
-			// for generating the string of classes. We want to use the value passed in from
-			// _setOption(), this is the new value of the classes option which was passed to
-			// _setOption(). We pass this value directly to _classes().
 			elements.addClass( this._classes( {
 				element: elements,
 				keys: classKey,
@@ -428,8 +412,6 @@ $.Widget.prototype = {
 
 	_setOptionDisabled: function( value ) {
 		this._toggleClass( this.widget(), this.widgetFullName + "-disabled", null, !!value );
-
-		// If the widget is becoming disabled, then nothing is interactive
 		if ( value ) {
 			this._removeClass( this.hoverable, null, "ui-state-hover" );
 			this._removeClass( this.focusable, null, "ui-state-focus" );
@@ -538,14 +520,12 @@ $.Widget.prototype = {
 		var delegateElement;
 		var instance = this;
 
-		// No suppressDisabledCheck flag, shuffle arguments
 		if ( typeof suppressDisabledCheck !== "boolean" ) {
 			handlers = element;
 			element = suppressDisabledCheck;
 			suppressDisabledCheck = false;
 		}
 
-		// No element argument, shuffle and use this.element
 		if ( !handlers ) {
 			handlers = element;
 			element = this.element;
@@ -558,9 +538,6 @@ $.Widget.prototype = {
 		$.each( handlers, function( event, handler ) {
 			function handlerProxy() {
 
-				// Allow widgets to customize the disabled handling
-				// - disabled as an array instead of boolean
-				// - disabled class as method for disabling individual parts
 				if ( !suppressDisabledCheck &&
 						( instance.options.disabled === true ||
 						$( this ).hasClass( "ui-state-disabled" ) ) ) {
@@ -570,7 +547,6 @@ $.Widget.prototype = {
 					.apply( instance, arguments );
 			}
 
-			// Copy the guid so direct unbinding works
 			if ( typeof handler !== "string" ) {
 				handlerProxy.guid = handler.guid =
 					handler.guid || handlerProxy.guid || $.guid++;
@@ -18979,8 +18955,6 @@ $.widget( "ui.tooltip", {
 	}
 } );
 
-// DEPRECATED
-// TODO: Switch return back to widget declaration at top of file when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for tooltipClass option

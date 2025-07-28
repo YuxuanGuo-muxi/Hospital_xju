@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Date;
 import java.util.List;
 
@@ -60,5 +59,4 @@ public class ReportDto {
     private String therapyMethod;
     // 疗效
     private String curativeEffect;
-
 }
