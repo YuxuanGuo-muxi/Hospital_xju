@@ -5,6 +5,7 @@
         delete from pulmonary_nodule where report_id = #{reportId}
     </delete>
 
+
     <select id="checkIdExists" resultType="java.lang.Integer">
         select count(*) from pulmonary_nodule where nodule_id = #{noduleId} limit 1
     </select>
