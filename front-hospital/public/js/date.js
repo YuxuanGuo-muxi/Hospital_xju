@@ -5,17 +5,12 @@ $(function() {
 
     var to_$input = $('.date_to').pickadate(),
     to_picker = to_$input.pickadate('picker')
-
-
-    // Check if there’s a “from” or “to” date to start with.
     if ( from_picker.get('value') ) {
         to_picker.set('min', from_picker.get('select'))
     }
     if ( to_picker.get('value') ) {
         from_picker.set('max', to_picker.get('select'))
     }
-
-    // When something is selected, update the “from” and “to” limits.
     from_picker.on('set', function(event) {
         if ( event.select ) {
         to_picker.set('min', from_picker.get('select'))    
