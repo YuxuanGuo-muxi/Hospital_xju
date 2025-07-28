@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.xju.hospital.util.Result;
 
-
 @RestController
 @RequestMapping("/api/doctor")
 @Slf4j
